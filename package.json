@@ -1,7 +1,7 @@
 {
-	"name": "base-project",
+	"name": "mtg-planner",
 	"version": "0.1.0",
-	"description": "This is my base project to use when creating new projects.",
+	"description": "For planning Magic: The Gathering decks.",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -13,7 +13,7 @@
 	"author": "Mark Hanna",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/cipscis/base-project.git"
+		"url": "https://github.com/cipscis/mtg-planner.git"
 	},
 	"license": "Hippocratic-2.1",
 	"devDependencies": {

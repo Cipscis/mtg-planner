@@ -1,98 +1,14 @@
-# Using this template
+# mtg-planner
 
-This is my template repository to use when creating new projects. The top section of this readme is for how to use it to start a new project, and should be removed as part of the setup process.
+![Build and deploy status badge](https://github.com/cipscis/mtg-planner/actions/workflows/build-and-deploy.yml/badge.svg)
 
-## Setup
-
-You will need to install [Node.js](https://nodejs.org/en/) before using this template.
-
-1. Click "[Use this template](https://github.com/cipscis/base-project/generate)" to create a new repository based on this one.
-2. Update the `package.json` file to reflect your new project's details.
-3. Update names throughout the package.
-	a. Replace `base-project` with the name of your project as it is used in code.
-	b. Replace `Base Project` Replace with the name of your project as it is used in documentation.
-	c. If you're not me, replace `@cipscis` with your npm username and then `cipscis` with your GitHub username, and be sure to also update the `author` property in the `package.json`.
-4. Create a `.env` file. See [.env](#env-1) for more information.
-5. Run `npm install`.
-6. Update this `README.md` file and the `CHANGELOG.md` file to remove the instruction sections.
-
-Now you're ready to work on code in this project.
-
-## Usage
-
-Using the files specified in `package.json`, you can create a project to be installed with npm.
-
-In the `app` folder, which can be deployed to GitHub Pages but is not included when your project is installed, you can document your project. Here, the project files outside the `app` folders can be included in the bundle by using root-relative paths such as `import foo from '/main.js';`
-
-Once you have an initial version of your project ready to push, you will want to update the `version` attribute of your `package.json` file to `"1.0.0"`. See [Semantic Versioning](https://semver.org/spec/v2.0.0.html) for more information on version numbers.
-
-You should also update the `CHANGELOG.md` file to describe your changes. This is particularly important after your initial 1.0.0 version.
-
-## Structure
-
-### Frontend assets
-
-By default, your project consists of a single file. This is called `main.js`, but you can change it. If you do, make sure you update the [`browser`](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#browser) property in your `package.json` file. If your project doesn't need to be run in a browser, you should change this property to [`main`](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main).
-
-Additional files can be included in your project by adding them to the [`files`](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#files) array in your `package.json` file.
-
-Assets such as CSS and JavaScript are contained in `/app/assets`. In here, the contents of the `scss` folder are used to compile CSS files into the `css` folder.
-
-The `/app/assets/js` folder contains a `src` folder and a `dist` folder. The JavaScript files inside the `src` folder are bundled into the `dist` folder. By default, Webpack is configured to look for a single entry point at `/app/assets/js/src/main.js`.
-
-### Backend assets
-
-The Node.js server run using [Express](https://expressjs.com/) has its files inside the `/server` directory. By default, this just runs a static http server that serves files in the `/app` directory, but it can be extended to add additional functionality.
-
-This server only runs locally, so any additional functionality will not be available on GitHub Pages.
-
-## Configuration
-
-### package.json
-
-By default, the `package.json` file is configured to set the project to be of type `module`. This means NodeJS will use ES module syntax as opposed to the default CommonJS syntax, allowing the use of `import` and `export` keywords.
-
-For more information on the differences, see [Differences between ES modules and CommonJS](https://nodejs.org/api/esm.html#esm_differences_between_es_modules_and_commonjs)
-
-### gulpfile.js
-
-This file tells [Gulp](https://gulpjs.com/) which files to watch and where to output compiled assets. Some configuration for JavaScript bundling is duplicated between here and [`webpack.config.js`](#webpackconfigjs)
-
-### webpack.config.js
-
-This file configures [Webpack](https://webpack.js.org/), telling it which entry points to use and where to output its bundled assets. Some configuration is duplicated between here and [`gulpfile.js`](#gulpfilejs)
-
-### .env
-
-See [.env](#env-1) for information on setting up a `.env` file.
-
-## GitHub Pages
-
-This project is set up to use a GitHub Action every time new code is pushed to the `main` branch. This GitHub Action runs the `build` task, then deploys the contents of the `app` directory by committing them to a `gh-pages` branch. This `gh-pages` branch should be configured in GitHub to be published to GitHub Pages.
-
-When publishing a project using [GitHub Pages](https://pages.github.com/), the project usually appears at a URL with a path, such as `https://cipscis.github.io/base-project`. This means using root relative URLs such as `/assets/css/main.css` would work locally, but would break when the project is published on GitHub Pages.
-
-To fix this, the local Node.js server looks for a `PROJECT_NAME` variable in your [`.env`](#env-1) file. If it finds one, it sets up redirects so URLs starting with `/${PROJECT_NAME}` can be used as though they were root relative, so they will find your assets.
-
-By default, the `index.html` file is configured to be published to GitHub Pages under the project name `base-project`. When you use it as a base for your own project, you will need to update these URLs.
-
----
-
-**Delete everything above here when creating a new project**
-
----
-
-# base-project
-
-![Build and deploy status badge](https://github.com/cipscis/base-project/actions/workflows/build-and-deploy.yml/badge.svg)
-
-[Base Project](https://cipscis.github.io/base-project/)
+[MTG Planner](https://cipscis.github.io/mtg-planner/)
 
 ## Development
 
 You will need to install [Node.js](https://nodejs.org/en/) before working on this project.
 
-1. Clone the repository using `git clone https://github.com/cipscis/base-project.git`.
+1. Clone the repository using `git clone https://github.com/cipscis/mtg-planner.git`.
 2. Run `npm install` to install development dependencies.
 3. Create a [`.env`](#env) file.
 4. Run `npm start` to run the local server and watch CSS and JS files for changes.
@@ -128,7 +44,7 @@ Used by [Express](https://expressjs.com/) to determine which port to use when ru
 An example `.env` file you can use for development is:
 
 ```
-PROJECT_NAME = "base-project"
+PROJECT_NAME = "mtg-planner"
 MODE = "development"
 PORT = "8080"
 ```
