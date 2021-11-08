@@ -1,0 +1,36 @@
+{
+	"name": "base-project",
+	"version": "0.1.0",
+	"description": "This is my base project to use when creating new projects.",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"server": "node server/server.js",
+		"build": "gulp build",
+		"watch": "gulp",
+		"start": "concurrently --kill-others \"npm run server\" \"npm run watch\""
+	},
+	"author": "Mark Hanna",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cipscis/base-project.git"
+	},
+	"license": "Hippocratic-2.1",
+	"devDependencies": {
+		"concurrently": "^6.2.1",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"gulp": "^4.0.2",
+		"gulp-sass": "^5.0.0",
+		"resolve-typescript-plugin": "^1.1.0",
+		"sass": "^1.39.0",
+		"ts-loader": "^9.2.5",
+		"webpack": "^5.52.0"
+	},
+	"engines": {
+		"node": ">=14"
+	},
+	"dependencies": {
+		"typescript": "^4.4.2"
+	}
+}
