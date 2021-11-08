@@ -1,1 +1,1 @@
-{"version":3,"file":"main.js","mappings":"mBAAAA,QAAQC,IAAI,mB","sources":["webpack://base-project/./app/assets/js/src/main.ts"],"sourcesContent":["console.log('code goes here');\n"],"names":["console","log"],"sourceRoot":""}
+{"version":3,"file":"main.js","mappings":"mBAAAA,QAAQC,IAAI,mB","sources":["webpack://mtg-planner/./app/assets/js/src/main.ts"],"sourcesContent":["console.log('code goes here');\n"],"names":["console","log"],"sourceRoot":""}
