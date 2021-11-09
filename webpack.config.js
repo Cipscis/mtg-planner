@@ -21,8 +21,10 @@ const config = {
 		filename: '[name].js',
 	},
 	resolve: {
-		fullySpecified: true,
-		plugins: [new ResolveTypeScriptPlugin()],
+		extensions: [
+			'.js',
+			'.ts',
+		],
 	},
 	module: {
 		rules: [
