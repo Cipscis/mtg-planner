@@ -1,6 +1,7 @@
-import * as scry from 'scryfall-sdk';
+// import * as scry from 'scryfall-sdk';
 
-(async () => {
-	const card = await scry.Cards.byName('Sol Ring');
-	console.log(card);
-})();
+import decklist from './decklist';
+import { Deck } from './Deck';
+
+const deck = new Deck(decklist);
+console.log(deck.cards, deck.numCards);
