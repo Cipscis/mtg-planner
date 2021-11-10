@@ -1,16 +1,20 @@
-interface ICard {
+interface ICardOptions {
 	name: string;
 	quantity: number;
 }
 
-class Card implements ICard {
+class Card implements ICardOptions {
 	name: string;
 	quantity: number;
 
-	constructor(options: ICard) {
+	constructor(options: ICardOptions) {
 		this.name = options.name;
 		this.quantity = options.quantity;
 	}
 };
 
-export { Card };
+export {
+	ICardOptions,
+	
+	Card,
+};
