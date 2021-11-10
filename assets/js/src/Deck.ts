@@ -1,15 +1,16 @@
-import { Card } from './Card';
+import { DeckCard } from './DeckCard';
+import { Decklist } from './Decklist';
 
 class Deck {
-	cards: Card[];
+	cards: DeckCard[];
 
 	constructor(decklist: string)
-	constructor(cards: Card[])
-	constructor(options: string | Card[]) {
-		if (typeof options === 'string') {
-			this.cards = Deck.readDecklist(options);
+	constructor(cards: readonly DeckCard[])
+	constructor(cards: string | readonly DeckCard[]) {
+		if (typeof cards === 'string') {
+			this.cards = Decklist.read(cards);
 		} else {
-			this.cards = options;
+			this.cards = cards.concat();
 		}
 	}
 
@@ -17,26 +18,8 @@ class Deck {
 		return this.cards.reduce((sum, card) => sum + card.quantity, 0);
 	}
 
-	static readDecklist(decklist: string): Card[] {
-		const cards = decklist
-			.split('\n')
-			.map(Deck.#readDecklistLine)
-			.filter((value) => value instanceof Card) as Card[];
-
-		return cards;
-	}
-
-	static #readDecklistLine(line: string): Card | null {
-		const mainParts = line.match(/^(\d+)x\s+(.+?)(\s*$|\s+(#|\(|\*))/);
-
-		if (mainParts) {
-			return {
-				name: mainParts[2],
-				quantity: parseInt(mainParts[1], 10),
-			};
-		} else {
-			return null;
-		}
+	toString() {
+		return Decklist.write(this);
 	}
 }
 

@@ -1,10 +1,9 @@
-import { Card } from './Card';
+import { DeckCard } from './DeckCard';
 declare class Deck {
-    #private;
-    cards: Card[];
+    cards: DeckCard[];
     constructor(decklist: string);
-    constructor(cards: Card[]);
+    constructor(cards: readonly DeckCard[]);
     get numCards(): number;
-    static readDecklist(decklist: string): Card[];
+    toString(): string;
 }
 export { Deck };
