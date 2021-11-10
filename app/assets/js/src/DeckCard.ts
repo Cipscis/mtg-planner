@@ -7,7 +7,7 @@ interface IDeckCardOptions extends ICardOptions {
 	overrides?: Map<string, string>;
 }
 
-class DeckCard extends Card implements IDeckCardOptions {	
+class DeckCard extends Card implements IDeckCardOptions {
 	flags?: Set<string>;
 	groups?: Set<string>;
 	overrides?: Map<string, string>;
