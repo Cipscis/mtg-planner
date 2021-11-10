@@ -12,7 +12,7 @@ const Decklist = {
 	},
 
 	writeLine(card: DeckCard) {
-		let line = '';//`${card.quantity}x ${card.name}`;
+		let line = `${card.quantity}x ${card.name}`;
 
 		if (card.flags) {
 			line += Array.from(card.flags).map((flag) => ` *${flag}*`).join('');
