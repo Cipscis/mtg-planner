@@ -1,5 +1,3 @@
-// import * as scry from 'scryfall-sdk';
-
 import decklist from './data/decklist';
 import { Deck } from './Deck';
 
