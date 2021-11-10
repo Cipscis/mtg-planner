@@ -2,9 +2,8 @@
 
 import decklist from './data/decklist';
 import { Deck } from './Deck';
-import { Decklist } from './Decklist';
 
 const deck = new Deck(decklist);
-// console.log(deck.cards, deck.numCards);
+console.log(deck.cards, deck.numCards);
 
 console.log(deck);

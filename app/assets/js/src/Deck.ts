@@ -14,9 +14,9 @@ class Deck {
 		}
 	}
 
-	// get numCards() {
-	// 	return this.cards.reduce((sum, card) => sum + card.quantity, 0);
-	// }
+	get numCards() {
+		return this.cards.reduce((sum, card) => sum + card.quantity, 0);
+	}
 
 	toString() {
 		return Decklist.write(this);
