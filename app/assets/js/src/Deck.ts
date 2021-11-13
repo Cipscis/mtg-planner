@@ -3,6 +3,7 @@ import { Decklist } from './Decklist';
 
 class Deck {
 	cards: DeckCard[];
+	ready: Promise<this>;
 
 	constructor(decklist: string)
 	constructor(cards: readonly DeckCard[])
@@ -12,6 +13,10 @@ class Deck {
 		} else {
 			this.cards = cards.concat();
 		}
+
+		this.ready = new Promise((resolve, reject) => {
+			Promise.all(this.cards.map((card) => card.ready)).then(() => resolve(this));
+		});
 	}
 
 	get numCards() {
