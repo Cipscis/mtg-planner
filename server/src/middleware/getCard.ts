@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 import * as Scry from 'scryfall-sdk';
-import { isSearchError, SearchError } from './SearchError.js';
+import { SearchError } from './SearchError.js';
 import { isScryCard } from './typeguards.js';
 
 import { readFile, writeFile } from 'fs/promises';
@@ -30,7 +30,6 @@ function isCacheSource(data: unknown): data is [string, Scry.Card][] {
 		return false;
 	}
 }
-
 
 const queue: IQueueItem[] = [];
 const queueThrottle = 100; // ms - Scryfall API rate limits throttled to 10 requests per second

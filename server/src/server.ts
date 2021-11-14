@@ -13,7 +13,7 @@ import { ghPagesProxy } from './gh-pages.js';
 ghPagesProxy(app);
 
 import { scryfallMiddleware } from './middleware/scryfall.js';
-scryfallMiddleware.init(app);
+scryfallMiddleware(app);
 
 app.listen(port, () => {});
 console.log(`Listening on port ${port}`);
