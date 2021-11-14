@@ -2,7 +2,7 @@ import { Express } from 'express';
 
 import * as Scry from 'scryfall-sdk';
 
-import routes from './routes.js';
+import routes from '../routes.js';
 
 type SearchError = Exclude<ReturnType<typeof Scry.error>, undefined>;
 

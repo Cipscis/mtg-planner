@@ -12,7 +12,7 @@ app.use(express.static('app'));
 import { ghPagesProxy } from './gh-pages.js';
 ghPagesProxy(app);
 
-import { scryfallMiddleware } from './scryfall.js';
+import { scryfallMiddleware } from './middleware/scryfall.js';
 scryfallMiddleware.init(app);
 
 app.listen(port, () => {});
