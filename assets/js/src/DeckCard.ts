@@ -17,6 +17,7 @@ class DeckCard extends Card implements IDeckCardOptions {
 	overrides?: Map<string, string>;
 
 	constructor(options: IDeckCardOptions) {
+		options.defer = true;
 		super(options);
 		
 		this.quantity = options.quantity;
