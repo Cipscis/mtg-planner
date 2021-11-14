@@ -1,10 +1,12 @@
+import { Card } from './Card';
 import decklist from './data/decklist';
 import { Deck } from './Deck';
 
 const deck = new Deck(decklist);
+const card = new Card('Forest');
 
 (async () => {
-	await deck.ready;
+	console.log(await deck.ready);
 
-	console.log(deck);
+	console.log(await card.ready);
 })()
