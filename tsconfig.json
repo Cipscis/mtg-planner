@@ -1,5 +1,5 @@
 {
-	"include": ["app/assets/js/src/**/*"],
+	"include": ["app/assets/js/src/**/*", "server/src/middleware/typeguards.ts"],
 	"exclude": ["app/assets/js/dist/**/*"],
 	"compilerOptions": {
 		"target": "ESNext",

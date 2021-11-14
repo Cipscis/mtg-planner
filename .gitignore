@@ -4,3 +4,4 @@ node_modules/
 app/assets/css/
 app/assets/js/dist/
 server/dist/
+cache.json

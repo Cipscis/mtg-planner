@@ -1,10 +1,9 @@
 import * as Scry from 'scryfall-sdk';
 import {
 	SearchError,
-
-	isScryCard,
 	isSearchError,
-} from './typeguards';
+} from '../../../../../server/src/middleware/SearchError';
+import { isScryCard } from '../../../../../server/src/middleware/typeguards';
 
 // TODO: There must be a cleaner way to share this between FE and BE code?
 import routes from '../../../../../server/src/routes';
