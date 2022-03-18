@@ -35,9 +35,9 @@ const queue: IQueueItem[] = [];
 const queueThrottle = 100; // ms - Scryfall API rate limits throttled to 10 requests per second
 const queueClock = global.setInterval(executeQueue, queueThrottle);
 
-const cache: Map<string, Scry.Card> = await readCache();
+const cache = await readCache();
 
-async function readCache() {
+async function readCache(): Promise<Map<string, Scry.Card>> {
 	try {
 		const source = await readFile(cachePath, { encoding: 'utf8' });
 		if (isCacheSource(source)) {
