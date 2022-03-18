@@ -39,9 +39,9 @@ const cache = await readCache();
 
 async function readCache(): Promise<Map<string, Scry.Card>> {
 	try {
-		const source = await readFile(cachePath, { encoding: 'utf8' });
+		const source = JSON.parse(await readFile(cachePath, { encoding: 'utf8' }));
 		if (isCacheSource(source)) {
-			const map = new Map(source);	
+			const map = new Map(source);
 			return map;
 		} else {
 			console.error('Unrecognised cache format');
@@ -90,7 +90,7 @@ async function getCard(req: Request, res: Response): Promise<void> {
 		const cardPromises = cardNames.map((cardName) => {
 			return cache.get(cardName) || queueGetCard(cardName);
 		});
-		
+
 		const cards = await Promise.all(cardPromises);
 
 		cards.forEach((card) => {
