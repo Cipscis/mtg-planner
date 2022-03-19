@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+$font-heading: "Roboto", Arial, sans-serif;
+
+$weight-normal: 400;
+$weight-bold: 700;
+
+@mixin font-heading-36b {
+	font-family: $font-heading;
+	font-size: 36px;
+	font-weight: $weight-bold;
+}

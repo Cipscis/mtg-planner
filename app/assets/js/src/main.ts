@@ -1,12 +1,17 @@
-import { Card } from './Card.js';
-import decklist from './data/decklist.js';
 import { Deck } from './Deck.js';
 
-const deck = new Deck(decklist);
-const card = new Card('Forest');
+import deckTemplate from './templates/deck.js';
 
-(async () => {
-	console.log(await deck.ready);
+import decklist from './data/decklist.js';
 
-	console.log(await card.ready);
-})()
+const $deckArea = document.querySelector('.js-deck-area');
+if ($deckArea) {
+	const deck = new Deck({
+		name: 'Marath',
+		cards: decklist,
+	});
+
+	deck.ready.then(() => {
+		$deckArea.innerHTML = deckTemplate(deck);
+	});
+}

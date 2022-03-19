@@ -2,20 +2,37 @@ import { getCards } from './api/getCard.js';
 import { DeckCard } from './DeckCard.js';
 import * as Decklist from './Decklist.js';
 
+interface IDeckOptions {
+	name: string;
+	cards: string | DeckCard[];
+};
+
 /** A Magic: The Gathering deck. */
 class Deck {
+	name: string;
 	cards: DeckCard[];
 
 	/** A Promise that resolves when a deck's cards' `data` properties are all set. It resolves to the Deck object. */
 	ready: Promise<this>;
 
-	constructor(decklist: string)
+	constructor(options: IDeckOptions)
 	constructor(cards: readonly DeckCard[])
-	constructor(cards: string | readonly DeckCard[]) {
-		if (typeof cards === 'string') {
-			this.cards = Decklist.read(cards);
+	constructor(decklist: string)
+	constructor(options: IDeckOptions | readonly DeckCard[] | string) {
+		if (typeof options === 'string') {
+			this.name = 'New Deck';
+			this.cards = Decklist.read(options);
+		} else if ('length' in options) {
+			this.name = 'New Deck';
+			this.cards = options.concat();
 		} else {
-			this.cards = cards.concat();
+			this.name = options.name;
+
+			if (typeof options.cards === 'string') {
+				this.cards = Decklist.read(options.cards);
+			} else {
+				this.cards = options.cards.concat();
+			}
 		}
 
 		this.ready = new Promise((resolve, reject) => {
@@ -33,8 +50,25 @@ class Deck {
 	}
 
 	/** The number of cards in the deck. */
-	get numCards() {
+	get numCards(): number {
 		return this.cards.reduce((sum, card) => sum + card.quantity, 0);
+	}
+
+	get manaCurve(): Map<number, number> {
+		const curve: Map<number, number> = new Map;
+
+		this.cards.forEach((card) => {
+			const manaValue = card.manaValue;
+			if (typeof manaValue !== 'undefined') {
+				if (curve.has(manaValue) === false) {
+					curve.set(manaValue, 1);
+				} else {
+					curve.set(manaValue, (curve.get(manaValue) as number) + 1);
+				}
+			}
+		});
+
+		return curve;
 	}
 
 	toString() {

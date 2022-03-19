@@ -1,0 +1,40 @@
+.deck {}
+
+.deck__name {
+	@include font-heading-36b;
+}
+
+.deck__cards {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	@include grid-ram(146px);
+	grid-gap: 10px;
+}
+
+.deck__card {}
+
+.deck__card__image {
+	display: block;
+	width: 100%;
+}
+
+.deck__mana-curve {
+	display: flex;
+}
+
+.deck__mana-curve__item {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: stretch;
+	width: 20px;
+	text-align: center;
+}
+
+.deck__mana-curve__value {}
+
+.deck__mana-curve__number {
+	background: $grey;
+	color: $white;
+}
