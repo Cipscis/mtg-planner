@@ -1,4 +1,4 @@
-import { getCard } from './api/getCard';
+import { getCard } from './api/getCard.js';
 
 // Polyfill for TypeScript < v4.5
 type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T;
@@ -22,9 +22,9 @@ class Card implements ICardOptions {
 		if (typeof options === 'string') {
 			options = { name: options } as ICardOptions;
 		}
-		
+
 		this.name = options.name;
-	
+
 		this.#isResolved = false;
 		this.ready = new Promise((resolveArg, reject) => {
 			this.#resolve = (value: this | PromiseLike<this>) => {
@@ -57,6 +57,6 @@ class Card implements ICardOptions {
 
 export {
 	ICardOptions,
-	
+
 	Card,
 };

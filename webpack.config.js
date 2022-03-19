@@ -21,6 +21,11 @@ const config = {
 		filename: '[name].js',
 	},
 	resolve: {
+		fullySpecified: true,
+		plugins: [new ResolveTypeScriptPlugin()],
+		alias: {
+			'server': path.resolve(__dirname, '../server/src'),
+		},
 		extensions: [
 			'.js',
 			'.ts',

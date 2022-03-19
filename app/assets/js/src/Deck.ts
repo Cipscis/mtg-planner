@@ -1,6 +1,6 @@
-import { getCards } from './api/getCard';
-import { DeckCard } from './DeckCard';
-import { Decklist } from './Decklist';
+import { getCards } from './api/getCard.js';
+import { DeckCard } from './DeckCard.js';
+import { Decklist } from './Decklist.js';
 
 class Deck {
 	cards: DeckCard[];
