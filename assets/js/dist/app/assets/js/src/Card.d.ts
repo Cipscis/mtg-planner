@@ -22,6 +22,6 @@ declare class Card implements ICardOptions {
     /**
      * Either store already retrieved card data, or retrieve data via the getCard API end point.
      */
-    getData(data?: Awaited<ReturnType<typeof getCard>>): Promise<import("scryfall-sdk/out/util/MagicQuerier").SearchError | import("scryfall-sdk").Card>;
+    getData(data?: Awaited<ReturnType<typeof getCard>>): Promise<import("scryfall-sdk").Card | null>;
 }
 export { ICardOptions, Card, };

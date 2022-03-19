@@ -1,14 +1,10 @@
 import * as Scry from 'scryfall-sdk';
-import {
-	SearchError,
-	isSearchError,
-} from 'server/middleware/SearchError.js';
 import { isScryCard } from 'server/middleware/typeguards.js';
 
 import routes from 'server/routes.js';
 
 /** Get data for one or more cards. */
-function getCards(...cardNames: string[]): Promise<Array<Scry.Card | SearchError>> {
+function getCards(...cardNames: string[]): Promise<Array<Scry.Card | null>> {
 	return new Promise(async (resolve, reject) => {
 		const url = `${routes.getCards}?names=${cardNames.map(encodeURIComponent).join('|')}`;
 
@@ -16,7 +12,7 @@ function getCards(...cardNames: string[]): Promise<Array<Scry.Card | SearchError
 		if (response.ok) {
 			const json: unknown = await response.json();
 
-			if (Array.isArray(json) && json.every((value: unknown) => isSearchError(value) || isScryCard(value))) {
+			if (Array.isArray(json) && json.every((value: unknown): value is null | Scry.Card => value === null || isScryCard(value))) {
 				resolve(json);
 			} else {
 				console.error(json);
@@ -29,7 +25,7 @@ function getCards(...cardNames: string[]): Promise<Array<Scry.Card | SearchError
 }
 
 /** Get data for a single card. */
-async function getCard(cardName: string): Promise<Scry.Card | SearchError> {
+async function getCard(cardName: string): Promise<Scry.Card | null> {
 	const cards = await getCards(cardName);
 
 	return cards[0];
