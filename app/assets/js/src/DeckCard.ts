@@ -1,14 +1,20 @@
 import { ICardOptions, Card } from './Card.js';
-import { Decklist } from './Decklist.js';
+import * as Decklist from './Decklist.js';
 
 interface IDeckCardOptions extends ICardOptions {
 	quantity: number;
 
+	/** Flags such as `'*CMDR*'` */
 	flags?: Set<string>;
+	/** Groups such as `'#Ramp'` */
 	groups?: Set<string>;
+	/** Overrides such as `'*CMC:3*'` */
 	overrides?: Map<string, string>;
 }
 
+/**
+ * A Magic: The Gathering card in the context of a deck.
+ */
 class DeckCard extends Card implements IDeckCardOptions {
 	quantity: number;
 
