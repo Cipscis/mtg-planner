@@ -2,14 +2,13 @@ import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 import * as Scry from 'scryfall-sdk';
-import { SearchError } from './SearchError.js';
 import { isScryCard } from './typeguards.js';
 
 import { readFile, writeFile } from 'fs/promises';
 
 interface IQueueItem {
 	cardName: string,
-	resolve: (value: Scry.Card | SearchError) => void,
+	resolve: (value: Scry.Card | null) => void,
 }
 
 const cachePath = './cache.json';
@@ -63,7 +62,7 @@ async function writeCache() {
 
 /** Add a `getCard` request to the queue. */
 function queueGetCard(cardName: string) {
-	return new Promise<Scry.Card | SearchError>((resolve, reject) => {
+	return new Promise<Scry.Card | null>((resolve, reject) => {
 		queue.push({
 			cardName,
 			resolve,
@@ -79,7 +78,9 @@ function executeQueue() {
 		const cardPromise = Scry.Cards.byName(queueItem.cardName);
 
 		cardPromise.then((card) => {
-			queueItem.resolve(Scry.error() || card);
+			queueItem.resolve(card);
+		}).catch((reason: any) => {
+			queueItem.resolve(null);
 		});
 	}
 }
