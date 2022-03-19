@@ -1,4 +1,4 @@
-import { DeckCard } from './DeckCard';
+import { DeckCard } from './DeckCard.js';
 declare class Deck {
     cards: DeckCard[];
     ready: Promise<this>;

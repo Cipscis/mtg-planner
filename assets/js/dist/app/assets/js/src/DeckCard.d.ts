@@ -1,4 +1,4 @@
-import { ICardOptions, Card } from './Card';
+import { ICardOptions, Card } from './Card.js';
 interface IDeckCardOptions extends ICardOptions {
     quantity: number;
     flags?: Set<string>;

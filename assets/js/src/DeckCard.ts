@@ -1,5 +1,5 @@
-import { ICardOptions, Card } from './Card';
-import { Decklist } from './Decklist';
+import { ICardOptions, Card } from './Card.js';
+import { Decklist } from './Decklist.js';
 
 interface IDeckCardOptions extends ICardOptions {
 	quantity: number;
@@ -19,7 +19,7 @@ class DeckCard extends Card implements IDeckCardOptions {
 	constructor(options: IDeckCardOptions) {
 		options.defer = true;
 		super(options);
-		
+
 		this.quantity = options.quantity;
 
 		if (options.flags) {

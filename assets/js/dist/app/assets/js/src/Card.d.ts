@@ -1,4 +1,4 @@
-import { getCard } from './api/getCard';
+import { getCard } from './api/getCard.js';
 declare type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T;
 interface ICardOptions {
     name: string;

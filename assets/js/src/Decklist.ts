@@ -1,5 +1,5 @@
-import { DeckCard } from './DeckCard';
-import { Deck } from './Deck';
+import { DeckCard } from './DeckCard.js';
+import { Deck } from './Deck.js';
 
 const Decklist = {
 	write(deck: Deck) {

@@ -1,6 +1,6 @@
-import { Card } from './Card';
-import decklist from './data/decklist';
-import { Deck } from './Deck';
+import { Card } from './Card.js';
+import decklist from './data/decklist.js';
+import { Deck } from './Deck.js';
 
 const deck = new Deck(decklist);
 const card = new Card('Forest');
