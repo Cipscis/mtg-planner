@@ -22,6 +22,10 @@ class DeckCard extends Card implements IDeckCardOptions {
 	groups?: Set<string>;
 	overrides?: Map<string, string>;
 
+	isLand?: boolean;
+	cmc?: number;
+	manaValue?: number;
+
 	constructor(options: IDeckCardOptions) {
 		options.defer = true;
 		super(options);
@@ -39,6 +43,21 @@ class DeckCard extends Card implements IDeckCardOptions {
 		if (options.overrides) {
 			this.overrides = options.overrides;
 		}
+
+		this.ready.then(() => {
+			this.isLand = !!this.data!.type_line.match(/\bLand\b/);
+
+			if (this.isLand === false) {
+				const cmcOverride = this.overrides?.get('CMC');
+				if (cmcOverride && typeof cmcOverride === 'number') {
+					this.cmc = cmcOverride;
+				} else {
+					this.cmc = this.data!.cmc;
+				}
+				this.manaValue = this.cmc;
+			}
+
+		});
 	}
 
 	toString() {

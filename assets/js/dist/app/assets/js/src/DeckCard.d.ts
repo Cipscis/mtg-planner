@@ -16,6 +16,9 @@ declare class DeckCard extends Card implements IDeckCardOptions {
     flags?: Set<string>;
     groups?: Set<string>;
     overrides?: Map<string, string>;
+    isLand?: boolean;
+    cmc?: number;
+    manaValue?: number;
     constructor(options: IDeckCardOptions);
     toString(): string;
 }

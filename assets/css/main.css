@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+dl {
+  margin: 0;
+}
+
+dd {
+  margin: 0;
+}
+
+.layout {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.deck__name {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.deck__cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
+  grid-gap: 10px;
+}
+
+.deck__card__image {
+  display: block;
+  width: 100%;
+}
+
+.deck__mana-curve {
+  display: flex;
+}
+
+.deck__mana-curve__item {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+  width: 20px;
+  text-align: center;
+}
+
+.deck__mana-curve__number {
+  background: #333;
+  color: #fff;
+}
