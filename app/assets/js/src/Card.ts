@@ -1,8 +1,5 @@
 import { getCard } from './api/getCard.js';
 
-// Polyfill for TypeScript < v4.5
-type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T;
-
 interface ICardOptions {
 	name: string;
 	data?: Awaited<ReturnType<typeof getCard>>;
