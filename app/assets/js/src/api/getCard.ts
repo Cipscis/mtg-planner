@@ -2,11 +2,10 @@ import * as Scry from 'scryfall-sdk';
 import {
 	SearchError,
 	isSearchError,
-} from '../../../../../server/src/middleware/SearchError';
-import { isScryCard } from '../../../../../server/src/middleware/typeguards';
+} from 'server/middleware/SearchError.js';
+import { isScryCard } from 'server/middleware/typeguards.js';
 
-// TODO: There must be a cleaner way to share this between FE and BE code?
-import routes from '../../../../../server/src/routes';
+import routes from 'server/routes.js';
 
 function getCards(...cardNames: string[]): Promise<Array<Scry.Card | SearchError>> {
 	return new Promise(async (resolve, reject) => {
