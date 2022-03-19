@@ -1,17 +1,14 @@
 import { DeckCard } from './DeckCard.js';
 import { Deck } from './Deck.js';
-declare const Decklist: {
-    write(deck: Deck): string;
-    writeLine(card: DeckCard): string;
-    read(decklist: string): DeckCard[];
-    readLine(line: string): DeckCard | null;
-    readLineFlags(line: string): Set<string> | undefined;
-    readLineGroups(line: string): Set<string> | undefined;
-    readLineOverrides(line: string): Map<string, string> | undefined;
-    cleanLine(line: string, options?: {
-        groups?: Set<string> | undefined;
-        flags?: Set<string> | undefined;
-        overrides?: Map<string, string> | undefined;
-    } | undefined): string;
-};
-export { Decklist };
+/**
+ * Write a `Deck` object to a Tapped Out style decklist string.
+ */
+export declare function write(deck: Deck): string;
+/**
+ * Write a `DeckCard` object to a single line of a Tapped Out style decklist string.
+ */
+export declare function writeLine(card: DeckCard): string;
+/**
+ * Read a Tapped Out style decklist string into an array of `DeckCard` objects.
+ */
+export declare function read(decklist: string): DeckCard[];

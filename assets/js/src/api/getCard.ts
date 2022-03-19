@@ -7,6 +7,7 @@ import { isScryCard } from 'server/middleware/typeguards.js';
 
 import routes from 'server/routes.js';
 
+/** Get data for one or more cards. */
 function getCards(...cardNames: string[]): Promise<Array<Scry.Card | SearchError>> {
 	return new Promise(async (resolve, reject) => {
 		const url = `${routes.getCards}?names=${cardNames.map(encodeURIComponent).join('|')}`;
@@ -27,6 +28,7 @@ function getCards(...cardNames: string[]): Promise<Array<Scry.Card | SearchError
 	});
 }
 
+/** Get data for a single card. */
 async function getCard(cardName: string): Promise<Scry.Card | SearchError> {
 	const cards = await getCards(cardName);
 
